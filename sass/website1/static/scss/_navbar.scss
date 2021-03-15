@@ -1,0 +1,85 @@
+@import 'colors';
+@import 'media';
+
+@mixin flex($justify, $direction) {
+    display: flex;
+    justify-content: $justify;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+.navbar {
+    background-color: $light;
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem calc((100vw - 1200px) / 2);
+    z-index: 10;
+    position: relative;
+
+    &__logo {
+        color: $dark;
+        cursor: pointer;
+        font-size: 2rem;
+        margin-left: 24px;
+        @include flex(center, row)
+    }
+
+    &__burger {
+        display: none;
+        position: absolute;
+        top: 22px;
+        right: 20px;
+        cursor: pointer;
+
+        @include tablet {
+          display: block;
+        }
+
+        &--line {
+            @include tablet {
+                background-color: $dark;
+                height: 3px;
+                margin: 5px;
+                width: 20px;
+                border-radius: 5px;
+            }
+        }
+    }
+
+   &__menu {
+       @include flex(space-around, row);
+       width: 50vw;
+       margin-right: 24px;
+
+       @include tablet {
+           display: none;
+       }
+
+       &--links {
+           color: $dark;
+
+           &:hover {
+               color: $lime;
+               transition: all 0.3s ease;
+           }
+       }
+
+       #button {
+           padding: 12px;
+           border: none;
+           outline: none;
+           border-radius: 4px;
+           background-color: $lime;
+           margin-left: 16px;
+           color: $light;
+
+           &:hover {
+               background-color: $red;
+               transition: all 0.3s ease;
+           }
+
+       }
+
+   } 
+}
